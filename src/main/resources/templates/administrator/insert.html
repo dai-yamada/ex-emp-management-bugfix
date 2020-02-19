@@ -79,6 +79,21 @@
 									</div>
 								</div>
 							</div>
+							<!-- 確認用パスワード -->
+							<div class="form-group">
+								<div class="row">
+									<div class="col-sm-12">
+										<label for="conPasswaord">
+											確認用パスワード:
+										</label>
+										<label th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error-messages">
+											確認用パスワードを入力してください
+										</label>
+										<div id="conPasswordText" style="color: red"></div>
+										<input type="password" name="" id="conPassword" class="form-control" placeholder="password">
+									</div>
+								</div>
+							</div>
 							<!-- 登録ボタン -->
 							<div class="form-group">
 								<div class="row">
@@ -100,6 +115,7 @@
 	<!-- end container -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="../../static/js/bootstrap.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/password.js"></script>
 </body>
 </html>
