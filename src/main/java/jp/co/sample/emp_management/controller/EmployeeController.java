@@ -97,4 +97,24 @@ public class EmployeeController {
 		employeeService.update(employee);
 		return "redirect:/employee/showList";
 	}
+	
+	@RequestMapping("/find")
+	public String findByName(String name, Model model) {
+		System.out.println(name);
+		List<Employee> employeeList = employeeService.findByName(name);
+		List<Employee> allEmployeeList = employeeService.showList();
+		//あいまい検索結果がなかった時and入力した文字が空の時
+		if(employeeList.size() == 0 && !("".equals(name))) {
+			model.addAttribute("result", "一件もありませんでした");
+			model.addAttribute("employeeList", allEmployeeList);
+			//入力した文字が空の時
+		} else if("".equals(name)) {
+			model.addAttribute("employeeList", allEmployeeList);
+			//入力された文字をあいまい検索
+		} else {
+			model.addAttribute("employeeList", employeeList);
+		}
+		System.out.println("con");
+		return "employee/list";
+	}
 }
