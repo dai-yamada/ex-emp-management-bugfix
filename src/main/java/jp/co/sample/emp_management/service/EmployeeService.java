@@ -54,7 +54,6 @@ public class EmployeeService {
 	}
 	
 	public List<Employee> findByName(String name) {
-		System.out.println("service");
 		return employeeRepository.findByName(name);
 	}
 }
